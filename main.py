@@ -5,6 +5,12 @@ from Cryptography.decrypt import decrypt_file
 
 
 def main():
+    options = {
+        "1": encrypt_file,
+        "2": decrypt_file,
+        "3": exit
+    }
+
     while True:
         # Display menu options and get user choice
         print("\nMENU")
@@ -13,12 +19,10 @@ def main():
         print("3. Exit")
         choice = input("Enter choice (1, 2, or 3): ")
 
-        if choice == "1":
-            encrypt_file()
-        elif choice == "2":
-            decrypt_file()
-        elif choice == "3":
-            break
+        # Call the corresponding function based on user's choice
+        func = options.get(choice)
+        if func:
+            func()
         else:
             print("Invalid choice. Please try again.")
 
